@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rating (1-10)"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
+    <RatingBar
+        android:id="@+id/ratingBarTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1"
+        android:progressTint="@color/primary_dark"
+        android:layout_marginTop="8dp"/>
+
+    <RatingBar
+        android:id="@+id/ratingBarBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1"
+        android:progressTint="@color/primary_dark"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Komentar"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etKomentar"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:hint="Tulis komentarmu..."
+        android:gravity="top"
+        android:padding="12dp"
+        android:backgroundTint="@color/light_purple"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>

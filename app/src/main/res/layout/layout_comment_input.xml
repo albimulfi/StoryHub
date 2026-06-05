@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="8dp">
+
+    <EditText
+        android:id="@+id/etCommentInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Tulis komentar..."
+        android:padding="8dp"
+        android:textSize="13sp"
+        android:backgroundTint="@color/light_purple"/>
+
+    <ImageView
+        android:id="@+id/btnSendComment"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@android:drawable/ic_menu_send"
+        android:tint="@color/primary"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</LinearLayout>

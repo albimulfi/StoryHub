@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/gradient_kotak"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="@color/white"
+            android:padding="4dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Novel"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/txtNovelTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DDDDDD"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- loading -->
+    <LinearLayout
+        android:id="@+id/layoutLoading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        android:layout_below="@id/header">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- form edit data novel -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Novel"
+                android:textColor="@color/gray_dark"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"/>
+
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Judul"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:padding="12dp"
+                android:textSize="15sp"
+                android:textColor="@color/gray_dark"
+                android:backgroundTint="@color/light_purple"
+                android:layout_marginBottom="14dp"/>
+
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tagline"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etTagline"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:padding="12dp"
+                android:textSize="15sp"
+                android:textColor="@color/gray_dark"
+                android:backgroundTint="@color/light_purple"
+                android:layout_marginBottom="14dp"/>
+
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Synopsis"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etSynopsis"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:padding="12dp"
+                android:textSize="15sp"
+                android:gravity="top"
+                android:textColor="@color/gray_dark"
+                android:backgroundTint="@color/light_purple"
+                android:layout_marginBottom="14dp"/>
+
+            <!-- edit cover image -->
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cover Image"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"/>
+
+            <ImageView
+                android:id="@+id/imgCoverPreview"
+                android:layout_width="100dp"
+                android:layout_height="140dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/storyhub_logo"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/btnPilihCover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Foto Cover"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- edit banner image -->
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Banner Image"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"/>
+
+            <ImageView
+                android:id="@+id/imgBannerPreview"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/storyhub_logo"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/btnPilihBanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Foto Banner"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- genre, tag, dan mood -->
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genre, Tag, dan Mood"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="6dp"
+                android:background="@drawable/border_bottom_only">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    android:tint="#AAAAAA"/>
+
+                <EditText
+                    android:id="@+id/etSearchGenreTagMood"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cari genre, tag, dan mood..."
+                    android:textSize="13sp"
+                    android:textColor="@color/gray_dark"
+                    android:textColorHint="@color/gray"
+                    android:background="@null"
+                    android:paddingStart="8dp"
+                    android:inputType="text"
+                    android:maxLines="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutSearchPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_background"
+                android:elevation="4dp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <LinearLayout
+                        android:id="@+id/containerSearchPreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/containerSelectedChips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:flexWrap="wrap"
+                app:flexDirection="row"
+                xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerStatus"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:backgroundTint="@color/primary"
+                android:layout_marginBottom="20dp"/>
+
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publikasi"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerPublishStatus"
+                android:layout_width="match_parent"
+                android:textColor="@color/gray_dark"
+                android:layout_height="52dp"
+                android:layout_marginBottom="20dp"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Simpan Perubahan"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/button_gradient"
+                android:backgroundTint="@null"
+                android:layout_marginBottom="12dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDelete"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Hapus Novel"
+                android:textColor="#FF3B30"
+                android:background="@drawable/chip_background"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- list chapter -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar Chapter"
+                android:textColor="@color/gray_super_dark"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="12dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerChapters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

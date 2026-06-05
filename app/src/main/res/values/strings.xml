@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">StoryHub</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_discover">Discover</string>
+    <string name="nav_mylist">My List</string>
+    <string name="nav_bookmark">Bookmark</string>
+    <string name="nav_profile">Profile</string>
+    <string name="login_required">Login untuk mengakses fitur ini</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_logout">Logout</string>
+    <string name="confirm_logout">Yakin ingin logout?</string>
+</resources>

@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="My List"
+                    android:textStyle="bold"
+                    android:textSize="26sp"
+                    android:textColor="@color/black"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOpenFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="⚙ Filter &amp; Sort"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+            </LinearLayout>
+
+            <!-- kalau belum login -->
+            <LinearLayout
+                android:id="@+id/layoutNotLoggedIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="40dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login untuk melihat list kamu"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:gravity="center"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Login"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"
+                    android:layout_marginTop="20dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Register"
+                    android:textColor="@color/primary"
+                    android:background="@drawable/chip_background"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+            <!-- tabs -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@color/white"
+                android:layout_marginBottom="8dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnTabMyArt"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="MyArtList"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_gradient"
+                    android:layout_marginEnd="20dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnTabMyChapter"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="MyChapterList"
+                    android:textColor="@color/primary"
+                    android:background="@drawable/chip_background"/>
+
+            </LinearLayout>
+
+            <!-- panel filter & sort -->
+            <LinearLayout
+                android:id="@+id/layoutFilterPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
+
+                <!-- category -->
+                <com.example.storyhub.utils.GradientText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:flexWrap="wrap">
+
+                    <com.example.storyhub.utils.GradientCheckBox
+                        android:id="@+id/cbBook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Book"
+                        app:buttonTint="@color/primary"
+                        android:layout_marginEnd="8dp"/>
+
+                    <com.example.storyhub.utils.GradientCheckBox
+                        android:id="@+id/cbNovel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Novel"
+                        app:buttonTint="@color/primary"
+                        android:layout_marginEnd="8dp"/>
+
+                    <com.example.storyhub.utils.GradientCheckBox
+                        android:id="@+id/cbManhwa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manhwa"
+                        app:buttonTint="@color/primary"
+                        android:layout_marginEnd="8dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.example.storyhub.utils.GradientCheckBox
+                        android:id="@+id/cbManga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manga"
+                        app:buttonTint="@color/primary"
+                        android:layout_marginEnd="8dp"/>
+
+                    <com.example.storyhub.utils.GradientCheckBox
+                        android:id="@+id/cbComic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comic"
+                        app:buttonTint="@color/primary"
+                        android:layout_marginEnd="8dp"/>
+
+                    <com.example.storyhub.utils.GradientCheckBox
+                        android:id="@+id/cbGame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Game"
+                        app:buttonTint="@color/primary"
+                        android:layout_marginEnd="8dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.example.storyhub.utils.GradientCheckBox
+                        android:id="@+id/cbVisualNovel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Visual Novel"
+                        app:buttonTint="@color/primary"
+                        android:layout_marginEnd="8dp"/>
+
+                    <com.example.storyhub.utils.GradientCheckBox
+                        android:id="@+id/cbStoryGame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Story Game"
+                        app:buttonTint="@color/primary"/>
+
+                </LinearLayout>
+
+                <!-- sudah direview atau belum -->
+                <com.example.storyhub.utils.GradientText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status Review"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioReviewStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbReviewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semua"
+                        app:buttonTint="@color/primary"
+                        android:checked="true"
+                        android:layout_marginEnd="16dp"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbReviewSudah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sudah Review"
+                        app:buttonTint="@color/primary"
+                        android:layout_marginEnd="16dp"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbReviewBelum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Belum Review"
+                        app:buttonTint="@color/primary"/>
+
+                </RadioGroup>
+
+                <!-- sort -->
+                <com.example.storyhub.utils.GradientText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Urutkan"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioSort"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Abjad"
+                        app:buttonTint="@color/primary"
+                        android:checked="true"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortRatingArt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rating Art"
+                        app:buttonTint="@color/primary"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortReviewersArt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Reviewer Art"
+                        app:buttonTint="@color/primary"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortRatingArtUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rating Art (Kamu)"
+                        app:buttonTint="@color/primary"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortReviewersArtUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Review Art (Kamu)"
+                        app:buttonTint="@color/primary"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortRatingCh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rating Chapter"
+                        app:buttonTint="@color/primary"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortRatingChUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rating Chapter (Kamu)"
+                        app:buttonTint="@color/primary"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortReviewersChUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Review Chapter (Kamu)"
+                        app:buttonTint="@color/primary"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortChapters"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Chapter"
+                        app:buttonTint="@color/primary"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbSortPublished"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Terbit"
+                        app:buttonTint="@color/primary"/>
+
+                </RadioGroup>
+
+                <!-- order (asc atau desc) -->
+                <com.example.storyhub.utils.GradientText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Urutan"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbOrderAsc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ASC"
+                        app:buttonTint="@color/primary"
+                        android:checked="true"
+                        android:layout_marginEnd="24dp"/>
+
+                    <com.example.storyhub.utils.GradientRadioButton
+                        android:id="@+id/rbOrderDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DESC"
+                        app:buttonTint="@color/primary"/>
+
+                </RadioGroup>
+
+                <!-- filter genre, tag, mood -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:paddingBottom="6dp"
+                    android:background="@drawable/border_bottom_only">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@android:drawable/ic_menu_search"
+                        android:tint="#AAAAAA"/>
+
+                    <EditText
+                        android:id="@+id/etSearchFilter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Cari genre, tag, dan mood yang kamu suka"
+                        android:textSize="13sp"
+                        android:textColorHint="#AAAAAA"
+                        android:textColor="@color/gray_dark"
+                        android:backgroundTint="@color/light_purple"
+                        android:background="@null"
+                        android:paddingStart="8dp"
+                        android:inputType="text"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"/>
+
+                </LinearLayout>
+
+                <!-- preview search genre, tag, dan mood di search -->
+                <LinearLayout
+                    android:id="@+id/layoutSearchPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_background"
+                    android:elevation="4dp"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+
+                        <LinearLayout
+                            android:id="@+id/containerSearchPreview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"/>
+
+                    </ScrollView>
+
+                </LinearLayout>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/containerSelectedChips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:flexWrap="wrap"
+                    app:flexDirection="row"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnApplyFilter"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="Terapkan"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_gradient"
+                        android:backgroundTint="@null"
+                        android:layout_marginEnd="8dp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnResetFilter"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="Reset"
+                        android:textColor="@color/primary"
+                        android:background="@drawable/chip_background"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtEmptyMyArt"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:gravity="center"
+                android:text="Art yang kamu cari tidak ditemukan"
+                android:textSize="16sp"
+                android:textColor="#888888"
+                android:visibility="gone"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/txtEmptyMyChapter"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:gravity="center"
+                android:text="Chapter yang kamu cari tidak ditemukan"
+                android:textSize="16sp"
+                android:textColor="#888888"
+                android:visibility="gone"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- myartlist -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMyArt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+            <!-- mychapterlist -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMyChapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:visibility="gone"/>
+
+            <!-- perhalamanan/pagination -->
+            <LinearLayout
+                android:id="@+id/layoutPagination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPrevPage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="← Prev"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/txtPageInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Halaman 1 / 1"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray"
+                    android:layout_marginHorizontal="16dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNextPage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Next →"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="80dp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- navbar bottom -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_nav_bg"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@android:drawable/ic_menu_view"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="10sp"
+                android:textColor="#888888"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navDiscover"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@android:drawable/ic_menu_search"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Discover"
+                android:textSize="10sp"
+                android:textColor="#888888"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navMyList"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="13dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@android:drawable/ic_menu_agenda"
+                android:tint="@color/primary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My List"
+                android:textSize="10sp"
+                android:textColor="@color/primary"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navBookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="20dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_bookmark"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bookmark"
+                android:textSize="10sp"
+                android:textColor="#888888"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@android:drawable/ic_menu_myplaces"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textSize="10sp"
+                android:textColor="#888888"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

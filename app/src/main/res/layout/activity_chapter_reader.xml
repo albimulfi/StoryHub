@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:paddingVertical="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/gradient_kotak"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:id="@+id/txtArtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/txtChapterTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnToggleNav"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_menu_book"
+            android:tint="@color/white"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutNavTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/chip_background"
+        android:padding="8dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPrevTop"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="‹"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/button_gradient"
+            android:backgroundTint="@null"
+            android:layout_marginEnd="6dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnScrollTop"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="↑"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:background="@drawable/button_gradient"
+            android:backgroundTint="@null"
+            android:layout_marginEnd="6dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnScrollBottom"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="↓"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:background="@drawable/button_gradient"
+            android:backgroundTint="@null"
+            android:layout_marginEnd="6dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNextTop"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="›"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/button_gradient"
+            android:backgroundTint="@null"/>
+
+    </LinearLayout>
+
+    <!-- loading -->
+    <LinearLayout
+        android:id="@+id/layoutLoading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading chapter..."
+            android:textColor="#888888"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
+
+    <!-- novel -->
+    <ScrollView
+        android:id="@+id/scrollNovel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNovelContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:textSize="16sp"
+                android:lineSpacingExtra="8dp"
+                android:textColor="#222222"/>
+
+            <LinearLayout
+                android:id="@+id/layoutNavBottomNovel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/chip_background"
+                android:padding="8dp"
+                android:layout_margin="12dp"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPrevBottomNovel"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="‹"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"
+                    android:layout_marginEnd="6dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnScrollTopBottomNovel"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="↑"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"
+                    android:layout_marginEnd="6dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnScrollBottomBottomNovel"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="↓"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"
+                    android:layout_marginEnd="6dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNextBottomNovel"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="›"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"/>
+
+            </LinearLayout>
+
+            <!-- tab review dan komentar -->
+            <LinearLayout
+                android:id="@+id/layoutChapterInteractionNovel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- tab -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChapterTabReviewNovel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Review"
+                            android:paddingHorizontal="20dp"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/button_gradient"/>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChapterTabCommentNovel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Komentar"
+                            android:paddingHorizontal="20dp"
+                            android:textColor="@color/primary"
+                            android:background="@drawable/chip_background"/>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- review chapter (novel) -->
+                <LinearLayout
+                    android:id="@+id/layoutChapterReviewsNovel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="18dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAddChapterReviewNovel"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="+ Tulis Review"
+                        android:textColor="@color/primary"
+                        android:background="@drawable/chip_background"
+                        android:backgroundTint="@null"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalChapterReviewsNovel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#888888"
+                        android:layout_marginBottom="8dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerChapterReviewsNovel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"/>
+
+                </LinearLayout>
+
+                <!-- komentar chapter (novel) -->
+                <LinearLayout
+                    android:id="@+id/layoutChapterCommentsNovel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="18dp"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAddChapterCommentNovel"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="+ Tulis Komentar"
+                        android:textColor="@color/primary"
+                        android:background="@drawable/chip_background"
+                        android:backgroundTint="@null"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalChapterCommentsNovel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#888888"
+                        android:layout_marginBottom="8dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerChapterCommentsNovel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- comic -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollComic"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerComicPages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+            <LinearLayout
+                android:id="@+id/layoutNavBottomComic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/chip_background"
+                android:padding="8dp"
+                android:layout_margin="12dp"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPrevBottomComic"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="‹"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"
+                    android:layout_marginEnd="6dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnScrollTopBottomComic"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="↑"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"
+                    android:layout_marginEnd="6dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnScrollBottomBottomComic"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="↓"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"
+                    android:layout_marginEnd="6dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNextBottomComic"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="›"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"/>
+
+            </LinearLayout>
+
+            <!-- tab review dan komentar (komik) -->
+            <LinearLayout
+                android:id="@+id/layoutChapterInteractionComic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginTop="12dp">
+
+                <!-- tab -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChapterTabReviewComic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Review"
+                            android:paddingHorizontal="20dp"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/button_gradient"/>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChapterTabCommentComic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Komentar"
+                            android:paddingHorizontal="20dp"
+                            android:textColor="@color/primary"
+                            android:background="@drawable/chip_background"/>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- teview chapter (komik) -->
+                <LinearLayout
+                    android:id="@+id/layoutChapterReviewsComic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="18dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAddChapterReviewComic"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="+ Tulis Review"
+                        android:textColor="@color/primary"
+                        android:background="@drawable/chip_background"
+                        android:backgroundTint="@null"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalChapterReviewsComic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#888888"
+                        android:layout_marginBottom="8dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerChapterReviewsComic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"/>
+
+                </LinearLayout>
+
+                <!-- komentar chapter (komik) -->
+                <LinearLayout
+                    android:id="@+id/layoutChapterCommentsComic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="18dp"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAddChapterCommentComic"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="+ Tulis Komentar"
+                        android:textColor="@color/primary"
+                        android:background="@drawable/chip_background"
+                        android:backgroundTint="@null"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalChapterCommentsComic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#888888"
+                        android:layout_marginBottom="8dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerChapterCommentsComic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

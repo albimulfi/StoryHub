@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/gradient_kotak"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="@color/white"
+            android:padding="4dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/txtChapterInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/txtArtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DDDDDD"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Judul Chapter"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etChapterTitle"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:padding="12dp"
+                android:textSize="15sp"
+                android:textColor="@color/gray_dark"
+                android:textColorHint="@color/gray"
+                android:backgroundTint="@color/light_purple"
+                android:layout_marginBottom="16dp"/>
+
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isi Chapter"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etChapterContent"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:padding="16dp"
+                android:gravity="top"
+                android:textColor="@color/gray_dark"
+                android:textColorHint="@color/gray"
+                android:backgroundTint="@color/light_purple"
+                android:textSize="15sp"
+                android:lineSpacingExtra="6dp"
+                android:layout_marginBottom="20dp"/>
+
+            <com.example.storyhub.utils.GradientText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publikasi"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerPublishStatus"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="20dp"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Simpan Chapter"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/button_gradient"
+                android:backgroundTint="@null"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

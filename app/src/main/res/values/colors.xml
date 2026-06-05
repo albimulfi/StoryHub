@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#8B5CF6</color>
+    <color name="primary_dark">#6D28D9</color>
+    <color name="blue">#38BDF8</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#111111</color>
+    <color name="gray">#F3C7C6C6</color>
+    <color name="gray_dark">#888888</color>
+    <color name="gray_super_dark">#565656</color>
+    <color name="light_purple">#E9D5FF</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="bg_main">#F8F8F8</color>
+    <color name="text_secondary">#666666</color>
+    <color name="gold">#FFD700</color>
+    <color name="yellow">#FFC107</color>
+    <color name="bookmarknonactive">#888888</color>
+    <color name="bookmarkactive">#6D28D9</color>
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8F8F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/gradient_kotak"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="@color/white"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/txtPageTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginStart="12dp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <com.example.storyhub.utils.GradientText
+                android:id="@+id/txtResultCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0 Art Ditemukan"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerArts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+            <TextView
+                android:id="@+id/txtEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tidak ada data"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:gravity="center"
+                android:padding="24dp"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/layoutPagination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPrevPage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="← Prev"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/txtPageInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Halaman 1 / 1"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray"
+                    android:layout_marginHorizontal="16dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNextPage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Next →"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_gradient"
+                    android:backgroundTint="@null"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
